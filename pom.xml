@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gm.utils</groupId>
+    <artifactId>common-utils</artifactId>
+    <version>0.5.5</version>
+    <packaging>jar</packaging>
+
+    <!-- 全局配置 -->
+    <properties>
+        <build.sourceEncoding>UTF-8</build.sourceEncoding>
+        <slf4j.version>1.1.7</slf4j.version>
+        <joda.time.version>2.9.9</joda.time.version>
+        <lombok.version>1.16.18</lombok.version>
+        <jpush.version>3.3.3</jpush.version>
+        <gson.version>2.8.5</gson.version>
+        <jackson.version>2.9.2</jackson.version>
+        <page.version>4.1.6</page.version>
+        <junit.version>4.12</junit.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
+        <mysql.version>5.1.41</mysql.version>
+        <jacob.version>1.14.3</jacob.version>
+        <http.version>4.5.5</http.version>
+        <async.http.version>4.1.3</async.http.version>
+        <netty.version>4.1.25.Final</netty.version>
+        <netty3.version>3.6.3.Final</netty3.version>
+        <fileupload.version>1.3.3</fileupload.version>
+        <sun.mail.version>1.5.2</sun.mail.version>
+        <poi.version>3.9</poi.version>
+        <zxing.version>3.3.3</zxing.version>
+        <thumbnailator.version>0.4.8</thumbnailator.version>
+    </properties>
+
+    <!-- 依赖包 -->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${sun.mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.jpush.api/jpush-client -->
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+            <version>${jpush.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>netty-all</artifactId>
+                    <groupId>io.netty</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${page.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.jacob-project/jacob -->
+        <!--文字转音频-->
+        <dependency>
+            <groupId>net.sf.jacob-project</groupId>
+            <artifactId>jacob</artifactId>
+            <version>${jacob.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${http.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>${http.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpasyncclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>${async.http.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>httpcore</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>${netty3.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${fileupload.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>${thumbnailator.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- 已配置全局编译环境, 如需其他版本可局部配置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>${build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Java Api Doc -->
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration><encoding>${build.sourceEncoding}</encoding></configuration>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>pg</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- 用混淆插件混淆代码 -->
+                    <plugin>
+                        <groupId>com.github.wvengen</groupId>
+                        <artifactId>proguard-maven-plugin</artifactId>
+                        <version>2.0.11</version>
+                        <executions>
+                            <execution>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>proguard</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <attach>true</attach>
+                            <attachArtifactClassifier>pg</attachArtifactClassifier>
+                            <!-- attach 的作用是在 install 与 deploy 时将生成的 pg 文件也安装与部署 -->
+                            <options> <!-- 详细配置方式参考 ProGuard 官方文档 -->
+
+                                <option>-ignorewarnings</option> <!--忽略所有告警-->
+                                <option>-dontshrink</option>   <!--不做 shrink -->
+                                <option>-dontoptimize</option> <!--不做 optimize -->
+                                <option>-dontskipnonpubliclibraryclasses</option>
+                                <option>-dontskipnonpubliclibraryclassmembers</option>
+                                <option>-dontnote</option>
+
+                                <option>-keepattributes Signature</option>
+
+                                <!--保持源码名与行号（异常时有明确的栈信息），注解（默认会过滤掉所有注解，会影响框架的注解）-->
+                                <option>-keepattributes Exceptions,InnerClasses,*Annotation*,Signature,LineNumberTable</option>
+
+                                <!-- 内部类不变 -->
+                                <option>-keep class com.gm.**.**$* { *; }</option>
+
+                                <!-- 方法名不变 -->
+                                <option>-keep class com.gm.** { public static &lt;methods&gt;; }</option>
+
+                                <!-- 全局变量不变 -->
+                                <option>-keep class com.gm.** { public static &lt;fields&gt;; }</option>
+
+
+                                <!-- 以下内容不参与混淆 -->
+                                <option>-keep class com.gm.constant.** {*;}</option>
+                                <option>-keep class com.gm.enums.** {*;}</option>
+                                <option>-keep class com.gm.ex.** {*;}</option>
+                                <option>-keep class com.gm.model.** {*;}</option>
+                                <option>-keep class com.gm.model.** {*;}</option>
+                                <option>-keep class com.gm.strong.** {*;}</option>
+
+                                <!-- 第三方内容不混淆 -->
+                                <option>-keep class !com.gm.**</option>
+
+
+                                <!-- 混淆时应用侵入式重载 -->
+                                <option>-overloadaggressively</option>
+
+                                <!-- 不混淆所有的set， get方法 -->
+                                <option>-keepclassmembers public class * {void set*(***);*** get*();}</option>
+
+                            </options>
+                            <!--指定混淆的jar包，我这里是将上一步输出的jar包进行混淆-->
+                            <injar>common-utils-${project.version}.jar</injar>
+                            <!--指定输出的jar包名-->
+                            <outjar>${project.build.finalName}-pg</outjar>
+                            <obfuscate>true</obfuscate>
+                            <!-- 添加依赖，必须添加，不然会报一些莫名错误-->
+                            <libs>
+                                <lib>D:\Java\jre-1.8.0_121\lib\rt.jar</lib>
+                                <lib>D:\Java\jre-1.8.0_121\lib\jce.jar</lib>
+                                <!--<lib>D:/workspace3/datacube/lib/apache-axiom-api-1.2.7.jar</lib>
+                                <lib>D:/workspace3/datacube/lib/axis2-kernel-1.7.1.jar</lib>-->
+                            </libs>
+                            <addMavenDescriptor>true</addMavenDescriptor>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>dep</id>
+            <build>
+                <plugins>
+                    <!-- 只部署PG包 -->
+                    <plugin>
+                        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.8.2</version>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <!-- skip默认deploy插件的执行 -->
+                                <configuration>
+                                    <skip>true</skip>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>deploy-file</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- 开发阶段上传到snapshot仓库，上线阶段上传到release仓库 -->
+                                    <repositoryId>${project.distributionManagement.snapshotRepository.id}</repositoryId>
+                                    <url>${project.distributionManagement.snapshotRepository.url}</url>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-pg.jar</file>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>pg</classifier>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>resource</id>
+            <build>
+                <plugins>
+                    <!-- 开放源码 -->
+                    <plugin>
+                        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>assembly</id>
+            <build>
+                <plugins>
+                    <!--将所有的依赖打到一个jar包里-->
+                    <plugin>
+                        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>assembly</id> <!-- this is used for inheritance merges -->
+                                <phase>package</phase> <!-- 指定在打包节点执行jar包合并操作 -->
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <finalName>${project.name}-${project.version}</finalName>
+                            <!--配置描述文件路径-->
+                            <descriptors>
+                                <descriptor>src/main/assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </plugin>
+                    <!-- 只部署assembly包 -->
+                    <plugin>
+                        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.8.2</version>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <!-- skip默认deploy插件的执行 -->
+                                <configuration>
+                                    <skip>true</skip>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>deploy-file</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- 开发阶段上传到snapshot仓库，上线阶段上传到release仓库 -->
+                                    <repositoryId>${project.distributionManagement.snapshotRepository.id}</repositoryId>
+                                    <url>${project.distributionManagement.snapshotRepository.url}</url>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-assembly.jar</file>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>assembly</classifier>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>Ali-Nexus</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Ali-Nexus</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- 自动发布 -->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus ReleaseRepository</name>
+            <url>http://192.168.1.22:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Nexus SnapshotRepository</name>
+            <url>http://192.168.1.22:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
